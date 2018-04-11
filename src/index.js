@@ -6,9 +6,6 @@ Vue.use(WZComponents)
 
 new Vue({
   el: '#app',
-  data: {
-    message: 'hello'
-  },
   template: '<App />',
   components: { App }
 })

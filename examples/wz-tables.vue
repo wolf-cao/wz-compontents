@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Readme from '../packages/WZtables/README.md'
+import Readme from '../packages/tables/README.md'
 export default {
   components: {
     Readme

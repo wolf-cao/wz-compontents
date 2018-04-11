@@ -1,4 +1,4 @@
-import WZtables from './WZtables/index'
+import WZtables from './tables/index'
 
 const components = [WZtables]
 

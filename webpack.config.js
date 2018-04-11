@@ -17,7 +17,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'web demo',
+      title: '组件| components',
       template: './src/index.html'
     })
   ],
