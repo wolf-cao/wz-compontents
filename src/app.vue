@@ -1,15 +1,17 @@
 <template>
   <div>
     <h1>app start</h1>
-    <wz-tables></wz-tables>
+    <example-wztables></example-wztables>
   </div>
 </template>
 
 <script>
+import ExampleWztables from '../examples/wz-tables.vue'
 export default {
-  mounted() {
-    // console.log(this)
+  components: {
+    ExampleWztables
   }
 }
 </script>
+
 
