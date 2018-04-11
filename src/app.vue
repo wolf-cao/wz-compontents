@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>app start</h1>
+    <h1>app start123</h1>
     <wz-tables></wz-tables>
   </div>
 </template>
