@@ -2,7 +2,7 @@
   "name": "wz-components",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "packages/index.js",
   "scripts": {
     "start": "webpack-dev-server --hot --open"
   },
