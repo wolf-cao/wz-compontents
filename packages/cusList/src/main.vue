@@ -1,14 +1,14 @@
 <template>
-  <div>this is a new {{ message }} components</div>
+  <ul class="wz-cuslit">
+    <slot></slot>
+  </ul>
 </template>
 
 <script>
 export default {
   name: 'wz-cus-list',
   data() {
-    return {
-      message: 'wz-cus-list'
-    }
+    return {}
   }
 }
 </script>

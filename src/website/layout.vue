@@ -22,7 +22,8 @@ export default {
 @import './styles.less';
 .app-main {
   .wrapper {
-    overflow: hidden;
+    display: flex;
+    padding-top: 80px;
   }
 }
 </style>

@@ -1,4 +1,5 @@
 const path = require('path')
+const utils = require('./packages/Utils')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -39,6 +40,10 @@ module.exports = {
       {
         test: /\.md$/,
         use: ['vue-markdown-loader']
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
       }
     ]
   },

@@ -13,6 +13,10 @@
   font-size: @MainTitleSize;
   overflow: hidden;
   padding: 0 80px;
+  position: fixed;
+  z-index: 999;
+  background-color: @white;
+  width: 100%;
 
   .logo {
     float: left;
