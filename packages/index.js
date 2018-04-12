@@ -1,6 +1,18 @@
 import WZtables from './tables/index'
+import WZsiderList from './siderList/index'
+import WZsearcher from './searcher/index'
+import WZpopMenus from './popMenus/index'
+import WZcusList from './cusList/index'
+import WZbarProgress from './barProgress/index'
 
-const components = [WZtables]
+const components = [
+  WZtables,
+  WZsiderList,
+  WZsearcher,
+  WZpopMenus,
+  WZcusList,
+  WZbarProgress
+]
 
 function install(Vue) {
   components.map(item => {
@@ -12,4 +24,12 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-export default { install, WZtables }
+export default {
+  install,
+  WZtables,
+  WZsiderList,
+  WZsearcher,
+  WZpopMenus,
+  WZcusList,
+  WZbarProgress
+}

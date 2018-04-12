@@ -1,12 +1,12 @@
 <template>
   <div class="main-content">
-    <wz-tables></wz-tables>
+    <wz-bar-progress></wz-bar-progress>
     <readme></readme>
   </div>
 </template>
 
 <script>
-import Readme from '../packages/tables/README.md'
+import Readme from '../packages/barProgress/README.md'
 export default {
   components: {
     Readme

@@ -1,15 +1,22 @@
 <template>
-  <div class="header">组件 | components</div>
+  <div class="header">
+    <span class="logo">组件 | components</span>
+  </div>
 </template>
 
 <style lang="less" scoped>
 @import './fonts.less';
 .header {
-  height: 60px;
-  line-height: 60px;
-  margin-bottom: 30px;
-  border-bottom: 1px solid @Blue;
+  height: 80px;
+  line-height: 80px;
+  border-bottom: 1px solid @GrayLine;
   font-size: @MainTitleSize;
+  overflow: hidden;
+  padding: 0 80px;
+
+  .logo {
+    float: left;
+  }
 }
 </style>
 

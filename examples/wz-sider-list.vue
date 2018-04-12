@@ -1,12 +1,12 @@
 <template>
   <div class="main-content">
-    <wz-tables></wz-tables>
+    <wz-sider-list></wz-sider-list>
     <readme></readme>
   </div>
 </template>
 
 <script>
-import Readme from '../packages/tables/README.md'
+import Readme from '../packages/siderList/README.md'
 export default {
   components: {
     Readme
