@@ -96,7 +96,7 @@ export default {
       background-color: rgba(144, 147, 153, 0.2);
 
       &::before {
-        background-color: @SubFont;
+        background-color: @PosFont;
       }
     }
   }

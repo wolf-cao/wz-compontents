@@ -1,5 +1,6 @@
 <template>
   <div class="main-content">
+    <h2>组件例子</h2>
     <wz-cus-list>
       <wz-cus-list-item>
         <ul class="descp-title">

@@ -18,7 +18,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: '组件| components',
+      title: '组件 | components',
       template: './src/index.html'
     })
   ],
@@ -26,7 +26,11 @@ module.exports = {
     rules: [
       {
         test: /\.less$/,
-        use: ['less-loader', 'css-loader', 'style-loader']
+        use: ['less-loader']
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
       },
       {
         test: /\.vue$/,
