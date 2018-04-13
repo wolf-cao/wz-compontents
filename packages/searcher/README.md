@@ -16,10 +16,10 @@
 
 ### 配置参数
 
-| 参数        | 类型     | 值                               |
-| :---------- | :------- | :------------------------------- |
-| type        | String   | 默认值: 'single', 其他值'normal' |
-| placeholder | String   | 默认值: '请输入搜索内容'         |
-| searchKeys  | Array    | 要搜索的数据关键字               |
-| searchData  | Array    | 要搜索的原始数据                 |
-| search      | Function | 返回一个数组类型的搜索结果       |
+| 参数        | 类型     | 值                                                            |
+| :---------- | :------- | :------------------------------------------------------------ |
+| type        | String   | 默认值: 'single', 其他值'normal'                              |
+| placeholder | String   | 默认值: '请输入搜索内容'                                      |
+| searchKeys  | Array    | 要搜索的数据关键字                                            |
+| searchData  | Array    | 要搜索的原始数据                                              |
+| search      | Function | 返回一个对象 { data: [Array]搜索结果, value: [String]搜索值 } |
