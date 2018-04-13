@@ -23,3 +23,7 @@
 | searchKeys  | Array    | 要搜索的数据关键字                                            |
 | searchData  | Array    | 要搜索的原始数据                                              |
 | search      | Function | 返回一个对象 { data: [Array]搜索结果, value: [String]搜索值 } |
+
+### 下为截图
+
+![img-alt](https://github.com/wolf-cao/my-images/blob/master/search.PNG?raw=true)

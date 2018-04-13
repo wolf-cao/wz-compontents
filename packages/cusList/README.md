@@ -17,3 +17,7 @@
 | 参数  | 类型   | 值                                                       |
 | ----- | :----- | :------------------------------------------------------- |
 | color | String | 默认值: 'blue'; 其他值('red', 'green', 'yellow', 'gray') |
+
+### 下为截图
+
+![img-alt](https://github.com/wolf-cao/my-images/blob/master/cuslist.PNG?raw=true)
