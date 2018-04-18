@@ -8,13 +8,12 @@ export default {
   },
   methods: {
     getRows(h) {
-      return this.store.states.data.map(item => {
+      return this.store.states.data.map((item, index) => {
         const contentEl = this.$slots.default
         return h(
           'div',
           {
-            class: 'wz-table-row',
-            rows: item
+            class: `wz-table-row table___row___${index}`
           },
           [contentEl]
         )
