@@ -16,7 +16,11 @@ export default {
   },
   mounted() {
     this.menus = Object.values(Components).map(item => {
-      if (typeof item !== 'function' && item.name !== 'wz-cus-list-item') {
+      if (
+        typeof item !== 'function' &&
+        item.name !== 'wz-cus-list-item' &&
+        item.name !== 'wz-table-column'
+      ) {
         return item.name
       }
     })

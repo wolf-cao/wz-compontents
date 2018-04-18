@@ -1,4 +1,5 @@
 import WZtables from './tables/index'
+import WZtableColumn from './tableColumn/index'
 import WZsiderList from './siderList/index'
 import WZsearcher from './searcher/index'
 import WZpopMenus from './popMenus/index'
@@ -8,6 +9,7 @@ import WZbarProgress from './barProgress/index'
 
 const components = [
   WZtables,
+  WZtableColumn,
   WZsiderList,
   WZsearcher,
   WZpopMenus,
@@ -29,6 +31,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   WZtables,
+  WZtableColumn,
   WZsiderList,
   WZsearcher,
   WZpopMenus,

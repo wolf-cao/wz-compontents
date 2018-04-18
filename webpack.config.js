@@ -26,14 +26,19 @@ module.exports = {
     rules: [
       {
         test: /\.less$/,
-        use: ['less-loader']
+        loader: 'style-loader!css-loader!less-loader'
       },
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
       },
       {
-        test: /\.vue$/,
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(vue)$/,
         loader: 'vue-loader',
         options: {
           loaders: {
