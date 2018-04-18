@@ -1,4 +1,4 @@
-import WZtableColumn from '../tables/src/tableColumn.vue'
+import WZtableColumn from '../tables/src/tableColumn'
 
 WZtableColumn.install = Vue => {
   Vue.component(WZtableColumn.name, WZtableColumn)

@@ -14,8 +14,10 @@
       .table-header-th-label {
         padding-left: 10px;
         display: block;
-        height: 50px;
-        line-height: 50px;
+        height: 36px;
+        line-height: 36px;
+        font-size: @SmallSize;
+        color: @SubFont;
       }
     }
   }
@@ -23,6 +25,23 @@
   .wz-table-body-wrapper {
     .wz-table-row {
       overflow: hidden;
+      border-bottom: 1px solid @GrayLine;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: @BlueBg;
+      }
+
+      .wz-table-column-item {
+        float: left;
+
+        .wz-table-checkbox-item {
+          padding-left: 10px;
+        }
+      }
     }
   }
 }

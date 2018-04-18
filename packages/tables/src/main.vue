@@ -1,7 +1,7 @@
 <template>
   <div class="wz-tables">
-    <table-header :store="store"></table-header>
-    <table-body :store="store">
+    <table-header :store="store" :checked="checked"></table-header>
+    <table-body :store="store" :checked="checked">
       <slot></slot>
     </table-body>
   </div>
@@ -20,6 +20,10 @@ export default {
     data: {
       type: Array,
       default: []
+    },
+    checked: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

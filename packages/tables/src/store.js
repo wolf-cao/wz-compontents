@@ -1,3 +1,4 @@
+import Vue from 'vue'
 const TableStore = function() {
   this.states = {
     data: [],
@@ -19,6 +20,9 @@ TableStore.prototype.mutations = {
     states.header.label = Array.from(
       new Set(headerData.label.concat(data.label))
     )
+  },
+  modifyData(states, data) {
+    Vue.set(data.data, data.changeKey, data.changeValue)
   }
 }
 

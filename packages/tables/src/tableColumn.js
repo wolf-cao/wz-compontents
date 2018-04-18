@@ -1,4 +1,3 @@
-<script>
 export default {
   name: 'wz-table-column',
   props: {
@@ -55,12 +54,3 @@ export default {
     )
   }
 }
-</script>
-
-<style lang="less" scoped>
-.wz-table-column-item {
-  float: left;
-}
-</style>
-
-
