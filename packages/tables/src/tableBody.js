@@ -1,7 +1,8 @@
-import TableCheckbox from './tableCheckbox.vue'
+import ElCheckbox from 'element-ui/lib/checkbox'
+import 'element-ui/lib/theme-chalk/checkbox.css'
 export default {
   name: 'wz-table-body',
-  components: { TableCheckbox },
+  components: { ElCheckbox },
   props: {
     store: {
       type: Object,
@@ -12,20 +13,32 @@ export default {
       default: false
     }
   },
+  computed: {
+    getData() {
+      return this.store.states.data
+    }
+  },
   methods: {
+    checkClickEvent(value) {
+      this.store.commit('toggleSelectRow', value)
+    },
     getRows(h) {
-      const { checked } = this
-      return this.store.states.data.map((item, index) => {
+      return this.getData.map((item, index) => {
         const contentEl = this.$slots.default
         const style = {
           width: '2%',
           minWidth: '29px',
           lineHeight: '60px'
         }
-        const checkboxEl = checked ? (
+        const checkboxEl = this.checked ? (
           <div class="wz-table-column-item" style={style}>
             <span class="wz-table-checkbox-item">
-              <table-checkbox data={item} />
+              <el-checkbox
+                value={item.checked}
+                on-change={() => {
+                  this.checkClickEvent(index)
+                }}
+              />
             </span>
           </div>
         ) : null
