@@ -6,7 +6,8 @@ const TableStore = function() {
       width: []
     },
     columns: [],
-    selectAll: false
+    selectAll: false,
+    sortIndex: -1
   }
 }
 
@@ -38,6 +39,9 @@ TableStore.prototype.mutations = {
       item.checked = states.selectAll
       return item
     })
+  },
+  setSortIndex(states, data) {
+    states.sortIndex = data
   }
 }
 
