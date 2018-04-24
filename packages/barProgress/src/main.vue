@@ -2,7 +2,6 @@
   <div class="wz-barProgress" ref='outBody'>
     <canvas class="drawProsess" ref="ctx"></canvas>
     <span>{{introduce}}</span>
-    <p>{{percentages}}%</p>
   </div>
 </template>
 
@@ -17,11 +16,11 @@ export default {
     },
     bgcolor: {
       type: String,
-      default: '#FFFFCC'
+      default: '#EEAEEE'
     },
     linecolor: {
       type: String,
-      default: '#FFFF00'
+      default: '#BF3EFF'
     },
     introduce: {
       type: String,
@@ -30,6 +29,14 @@ export default {
     cavWidth: {
       type: String,
       default: '100'
+    },
+    fontSize: {
+      type: Number,
+      default: 25
+    },
+    fontFamilys: {
+      type: String,
+      default: 'Microsoft Yahei'
     }
   },
   data() {
@@ -39,7 +46,11 @@ export default {
       drawCircleFond: '',
       canHeight: '',
       radius: '',
-      m: 0.9
+      m: 0.9,
+      startAngle: '',
+      xAngle: '',
+      endAngle: '',
+      tmpAngle: ''
     }
   },
   watch: {
@@ -53,7 +64,6 @@ export default {
   methods: {
     drawCircle() {
       this.per = this.percentage
-      this.percentages = this.percentage.toFixed(2)
       if (!this.per) {
         this.per = 0
       }
@@ -67,36 +77,83 @@ export default {
       this.$refs.outBody.style.width = `${this.cavWidth}px`
       this.$refs.outBody.style.height = `${this.canHeight}px`
       this.drawCircleFond = this.$refs.ctx.getContext('2d')
-      this.totalFun(4, this.bgcolor, 2.1)
+      //开始角度
+      this.startAngle = 0.9 * Math.PI
+      //偏移量角度
+      this.xAngle = 1 * (Math.PI / 180)
+      //结束角度
+      this.endAngle = 2.1 * Math.PI
+      //临时角度变量
+      this.tmpAngle = this.startAngle
+      this.darwPublic(4,this.bgcolor)
       setTimeout(this.begin(), 300)
     },
+    //绘制内层进度
+    rander() {
+      if (this.tmpAngle >= this.endAngle) {
+        return
+      } else if (this.tmpAngle + this.xAngle > this.endAngle) {
+        this.tmpAngle = this.endAngle
+      } else {
+        this.tmpAngle += this.xAngle
+      }
+      //画布中文字进行清除
+      this.drawCircleFond.clearRect(
+        this.cavWidth * 0.06,
+        this.canHeight * 0.4,
+        this.cavWidth * 0.8,
+        this.canHeight * 0.5
+      )
+      this.darwPublic(3,this.linecolor)
+      this.fondDraw()
+      requestAnimationFrame(this.rander)
+    },
+    //当前进度值判断
     begin() {
       let deg = 1.2 * (this.per / 100) + 0.9
       if (this.m < deg) {
-        this.totalFun(3, this.linecolor, this.m + 0.03)
+        this.endAngle = (this.m + 0.03) * Math.PI
+        this.rander()
         this.m += 0.8
         setTimeout(this.begin(), 30)
       } else {
-        this.totalFun(3, this.linecolor, deg)
+        this.endAngle = deg * Math.PI
+        this.rander()
       }
       if (!this.percentage) {
+        this.fondDraw()
         this.per = 0
         return
       }
     },
-    totalFun(lineWidths, colorAll, totalNumber) {
+    //文字动态显示
+    fondDraw() {
+      this.drawCircleFond.font = `${this.fontSize}px ${this.fontFamilys}`
+      this.drawCircleFond.textAlign = 'center'
+      this.drawCircleFond.fillText(
+        Math.round(
+          (this.tmpAngle - this.startAngle) /
+            (2.1 * Math.PI - this.startAngle) *
+            100
+        ) + '%',
+        this.cavWidth / 2,
+        this.cavWidth / 2 + 12.5
+      )
+    },
+    //画圆
+    darwPublic(lineWidths,colorAll){
       this.drawCircleFond.beginPath()
       this.drawCircleFond.lineWidth = lineWidths
-      this.drawCircleFond.lineCap = 'round'
       this.drawCircleFond.strokeStyle = colorAll
       this.drawCircleFond.arc(
         this.cavWidth / 2,
         this.cavWidth / 2,
         this.radius,
-        0.9 * Math.PI,
-        totalNumber * Math.PI
+        this.startAngle,
+        this.endAngle
       )
       this.drawCircleFond.stroke()
+      this.drawCircleFond.closePath()
     }
   }
 }

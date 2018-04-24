@@ -11,8 +11,8 @@ import Readme from '../packages/barProgress/README.md'
 export default {
   data() {
     return {
-      number: 50,
-      nameIntru: '介绍',
+      number: 90,
+      nameIntru: '介绍1',
       cavWidthCopy: '100'
     }
   },
