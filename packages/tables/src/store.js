@@ -1,4 +1,3 @@
-import Vue from 'vue'
 const TableStore = function() {
   this.states = {
     data: [],
@@ -6,7 +5,9 @@ const TableStore = function() {
       label: [],
       width: []
     },
-    columns: []
+    columns: [],
+    selectAll: false,
+    sortIndex: -1
   }
 }
 
@@ -21,8 +22,26 @@ TableStore.prototype.mutations = {
       new Set(headerData.label.concat(data.label))
     )
   },
-  modifyData(states, data) {
-    Vue.set(data.data, data.changeKey, data.changeValue)
+  toggleSelectAll(states) {
+    states.selectAll = !states.selectAll
+  },
+  toggleSelectRow(states, data) {
+    states.data = states.data.map((item, index) => {
+      if (data === index) {
+        item.checked = !item.checked
+      }
+      return item
+    })
+    states.selectAll = states.data.filter(item => !item.checked).length < 1
+  },
+  swithCheckAll(states) {
+    states.data = states.data.map(item => {
+      item.checked = states.selectAll
+      return item
+    })
+  },
+  setSortIndex(states, data) {
+    states.sortIndex = data
   }
 }
 

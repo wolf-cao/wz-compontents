@@ -10,14 +10,49 @@
 
     .wz-table-header-th {
       float: left;
+      overflow: hidden;
 
-      .table-header-th-label {
+      .table-header-th-label,
+      .table-header-th-sort,
+      .table-header-th-filter {
         padding-left: 10px;
-        display: block;
+        float: left;
         height: 36px;
         line-height: 36px;
         font-size: @SmallSize;
         color: @SubFont;
+      }
+
+      .table-header-th-sort {
+        padding-left: 0;
+
+        .fontfamily {
+          font-size: @DefaultSize;
+          line-height: 38px;
+          color: @PosFont;
+        }
+
+        &.up {
+          .yd-icon-sort-up {
+            color: @Blue;
+          }
+        }
+
+        &.down {
+          .yd-icon-sort-down {
+            color: @Blue;
+          }
+        }
+      }
+
+      .table-header-th-filter {
+        padding-left: 0;
+
+        .fontfamily {
+          font-size: @SmallSize;
+          line-height: 38px;
+          color: @PosFont;
+        }
       }
     }
   }
