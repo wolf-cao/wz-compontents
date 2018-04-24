@@ -29,6 +29,14 @@ export default {
     cavWidth: {
       type: String,
       default: '100'
+    },
+    fontSize: {
+      type: Number,
+      default: 25
+    },
+    fontFamilys: {
+      type: String,
+      default: 'Microsoft Yahei'
     }
   },
   data() {
@@ -92,7 +100,7 @@ export default {
       //画布中文字进行清除
       this.drawCircleFond.clearRect(
         this.cavWidth * 0.06,
-        this.canHeight * 0.6,
+        this.canHeight * 0.4,
         this.cavWidth * 0.8,
         this.canHeight * 0.5
       )
@@ -120,8 +128,7 @@ export default {
     },
     //文字动态显示
     fondDraw() {
-      let fontSize = 25
-      this.drawCircleFond.font = fontSize + 'px Microsoft Yahei'
+      this.drawCircleFond.font = `${this.fontSize}px ${this.fontFamilys}`
       this.drawCircleFond.textAlign = 'center'
       this.drawCircleFond.fillText(
         Math.round(
@@ -130,7 +137,7 @@ export default {
             100
         ) + '%',
         this.cavWidth / 2,
-        this.cavWidth / 2 + fontSize / 2
+        this.cavWidth / 2 + 12.5
       )
     },
     //画圆
