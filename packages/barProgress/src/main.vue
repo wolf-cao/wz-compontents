@@ -85,7 +85,7 @@ export default {
       this.endAngle = 2.1 * Math.PI
       //临时角度变量
       this.tmpAngle = this.startAngle
-      this.darwPublic(4,this.bgcolor)
+      this.darwPublic(4,this.bgcolor,this.endAngle)
       setTimeout(this.begin(), 300)
     },
     //绘制内层进度
@@ -104,7 +104,7 @@ export default {
         this.cavWidth * 0.8,
         this.canHeight * 0.5
       )
-      this.darwPublic(3,this.linecolor)
+      this.darwPublic(3,this.linecolor,this.tmpAngle)
       this.fondDraw()
       requestAnimationFrame(this.rander)
     },
@@ -141,7 +141,7 @@ export default {
       )
     },
     //画圆
-    darwPublic(lineWidths,colorAll){
+    darwPublic(lineWidths,colorAll,angle){
       this.drawCircleFond.beginPath()
       this.drawCircleFond.lineWidth = lineWidths
       this.drawCircleFond.strokeStyle = colorAll
@@ -150,7 +150,7 @@ export default {
         this.cavWidth / 2,
         this.radius,
         this.startAngle,
-        this.endAngle
+        angle
       )
       this.drawCircleFond.stroke()
       this.drawCircleFond.closePath()
@@ -158,5 +158,3 @@ export default {
   }
 }
 </script>
-
-
