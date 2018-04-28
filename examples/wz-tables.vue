@@ -1,6 +1,6 @@
 <template>
   <div class="main-content">
-    <wz-tables class="my-tables" :data="sourceData" :checked="true">
+    <wz-tables class="my-tables" :data="sourceData" :checked="true" :hasPagination="false" pageSize="7">
       <wz-table-column width="17%" label="产品名称">
         <div slot-scope="props">
           <span class="table-span-item">{{ props.name1 }}</span>

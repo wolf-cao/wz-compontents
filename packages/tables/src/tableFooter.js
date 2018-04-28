@@ -16,8 +16,12 @@ export default {
     }
   },
   render() {
-    return (
+    return this.store.states.pageData.isShow ? (
       <div class="wz-table-footer">
+        <span class="wz-footer-page-info">
+          第 {this.store.states.pageData.currNum} 页 - 共{' '}
+          {this.store.states.pageData.totalNum} 条
+        </span>
         <el-pagination
           layout="prev, pager, next"
           total={this.store.states.originTableData.length}
@@ -28,6 +32,6 @@ export default {
           }}
         />
       </div>
-    )
+    ) : null
   }
 }

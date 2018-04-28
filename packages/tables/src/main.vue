@@ -28,6 +28,14 @@ export default {
     checked: {
       type: Boolean,
       default: false
+    },
+    hasPagination: {
+      type: Boolean,
+      default: false
+    },
+    pageSize: {
+      type: String,
+      default: 5
     }
   },
   data() {
@@ -40,6 +48,8 @@ export default {
     data: {
       immediate: true,
       handler(values) {
+        this.store.commit('setIsShowPagination', this.hasPagination)
+        this.store.commit('setPageSize', this.pageSize)
         this.store.commit('setData', values)
         this.store.commit('switchTableData')
       }

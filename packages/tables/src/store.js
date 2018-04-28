@@ -10,8 +10,9 @@ const TableStore = function() {
     selectAll: false,
     sortIndex: -1,
     pageData: {
+      isShow: false,
       pageSize: 5,
-      pageNum: 0,
+      totalNum: 0,
       currNum: 1
     }
   }
@@ -21,6 +22,7 @@ TableStore.prototype.mutations = {
   setData(states, data) {
     states.originTableData = data
     states.tableData = data
+    states.pageData.totalNum = data.length
   },
   setHeader(states, data) {
     const headerData = JSON.parse(JSON.stringify(states.header))
@@ -50,16 +52,24 @@ TableStore.prototype.mutations = {
   setSortIndex(states, data) {
     states.sortIndex = data
   },
+  setIsShowPagination(states, data) {
+    states.pageData.isShow = data
+  },
   setCurrencyPage(states, data) {
     states.pageData.currNum = data
   },
+  setPageSize(states, data) {
+    states.pageData.pageSize = data
+  },
   switchTableData(states) {
-    states.tableData = states.originTableData.filter((item, index) => {
-      return (
-        index < states.pageData.currNum * states.pageData.pageSize &&
-        index >= (states.pageData.currNum - 1) * states.pageData.pageSize
-      )
-    })
+    if (states.pageData.isShow) {
+      states.tableData = states.originTableData.filter((item, index) => {
+        return (
+          index < states.pageData.currNum * states.pageData.pageSize &&
+          index >= (states.pageData.currNum - 1) * states.pageData.pageSize
+        )
+      })
+    }
   }
 }
 
