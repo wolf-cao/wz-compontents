@@ -14,9 +14,8 @@ exports.hasClass = (el, cls) => {
     throw new Error('className should not contain space.')
   if (el.classList) {
     return el.classList.contains(cls)
-  } else {
-    return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1
   }
+  return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1
 }
 
 exports.addClass = (el, cls) => {
@@ -60,4 +59,41 @@ exports.removeClass = (el, cls) => {
   if (!el.classList) {
     el.className = this.trim(curClass)
   }
+}
+
+exports.getValueByPath = (object, prop) => {
+  prop = prop || ''
+  const paths = prop.split('.')
+  let current = object
+  let result = null
+  for (let i = 0, j = paths.length; i < j; i++) {
+    const path = paths[i]
+    if (!current) break
+
+    if (i === j - 1) {
+      result = current[path]
+      break
+    }
+    current = current[path]
+  }
+  return result
+}
+
+exports.sortby = (attr, data) => {
+  return attr
+    .map(item => {
+      return {
+        value: item,
+        key: this.getValueByPath(item, data.sortkey)
+      }
+    })
+    .sort((a, b) => {
+      if (a.key > b.key) {
+        return 1 * data.reverse
+      } else if (a.key < b.key) {
+        return -1 * data.reverse
+      }
+      return 0 * data.reverse
+    })
+    .map(item => item.value)
 }

@@ -79,9 +79,9 @@ export default {
       const targetEl = evt.target.parentNode
       if (Utils.hasClass(targetEl, 'filter-show')) {
         Utils.removeClass(targetEl, 'filter-show')
-      } else {
-        Utils.addClass(targetEl, 'filter-show')
+        return
       }
+      Utils.addClass(targetEl, 'filter-show')
     },
     sortBy(evt, index) {
       const targetEl = evt.target.parentNode
@@ -89,12 +89,14 @@ export default {
       if (Utils.hasClass(targetEl, 'up')) {
         Utils.addClass(targetEl, 'down')
         Utils.removeClass(targetEl, 'up')
-      } else if (Utils.hasClass(targetEl, 'down')) {
+        return
+      }
+      if (Utils.hasClass(targetEl, 'down')) {
         Utils.removeClass(targetEl, 'down')
         Utils.removeClass(targetEl, 'up')
-      } else {
-        Utils.addClass(targetEl, 'up')
+        return
       }
+      Utils.addClass(targetEl, 'up')
     }
   },
   render() {

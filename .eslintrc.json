@@ -32,6 +32,7 @@
     "no-multiple-empty-lines": [2, { "max": 2 }],
     "semi": [2, "never"],
     "no-var": 2,
-    "no-redeclare": 1
+    "no-redeclare": 1,
+    "no-else-return": 2
   }
 }
