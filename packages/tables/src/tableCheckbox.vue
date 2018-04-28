@@ -16,7 +16,6 @@ export default {
   computed: {
     checked: {
       get() {
-        console.log(this.data.checked)
         return (this.data && this.data.checked) || false
       },
       set(changeValue) {

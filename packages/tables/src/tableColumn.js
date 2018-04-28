@@ -35,7 +35,7 @@ export default {
     const currDataIndex = this.$el.parentNode.className.substring(
       this.$el.parentNode.className.length - 1
     )
-    this.columnData = this.$parent.store.states.data[currDataIndex]
+    this.columnData = this.$parent.store.states.tableData[currDataIndex]
   },
   render(createElement) {
     const columnItem = this.$scopedSlots.default

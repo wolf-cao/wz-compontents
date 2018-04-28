@@ -22,7 +22,9 @@ export default {
       return this.store.states.header.width
     },
     checkAll() {
-      return this.store.states.data.filter(item => !item.checked).length < 1
+      return (
+        this.store.states.tableData.filter(item => !item.checked).length < 1
+      )
     },
     getSortIndex() {
       return this.store.states.sortIndex
@@ -65,7 +67,7 @@ export default {
               <i class="fontfamily yd-icon-sort-up" />
               <i class="fontfamily yd-icon-sort-down" />
             </span>
-            <span class="table-header-th-filter">
+            <span class="table-header-th-filter" on-click={this.filterEvent}>
               <i class="fontfamily defuben" />
             </span>
           </div>
@@ -73,16 +75,25 @@ export default {
         return index < 1 ? [checkboxEl, headerEl] : headerEl
       })
     },
-    sortBy(evt, index) {
-      this.store.commit('setSortIndex', index)
-      if (Utils.hasClass(evt.target.parentNode, 'up')) {
-        Utils.addClass(evt.target.parentNode, 'down')
-        Utils.removeClass(evt.target.parentNode, 'up')
-      } else if (Utils.hasClass(evt.target.parentNode, 'down')) {
-        Utils.removeClass(evt.target.parentNode, 'down')
-        Utils.removeClass(evt.target.parentNode, 'up')
+    filterEvent(evt) {
+      const targetEl = evt.target.parentNode
+      if (Utils.hasClass(targetEl, 'filter-show')) {
+        Utils.removeClass(targetEl, 'filter-show')
       } else {
-        Utils.addClass(evt.target.parentNode, 'up')
+        Utils.addClass(targetEl, 'filter-show')
+      }
+    },
+    sortBy(evt, index) {
+      const targetEl = evt.target.parentNode
+      this.store.commit('setSortIndex', index)
+      if (Utils.hasClass(targetEl, 'up')) {
+        Utils.addClass(targetEl, 'down')
+        Utils.removeClass(targetEl, 'up')
+      } else if (Utils.hasClass(targetEl, 'down')) {
+        Utils.removeClass(targetEl, 'down')
+        Utils.removeClass(targetEl, 'up')
+      } else {
+        Utils.addClass(targetEl, 'up')
       }
     }
   },

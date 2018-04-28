@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     getData() {
-      return this.store.states.data
+      return this.store.states.tableData
     }
   },
   methods: {
@@ -45,7 +45,8 @@ export default {
         return h(
           'div',
           {
-            class: `wz-table-row table___row___${index}`
+            class: `wz-table-row table___row___${index}`,
+            key: `${Math.random()}__${index}`
           },
           [checkboxEl, contentEl]
         )
