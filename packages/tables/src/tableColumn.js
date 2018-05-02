@@ -6,6 +6,17 @@ export default {
     },
     label: {
       type: String
+    },
+    prop: {
+      type: String
+    },
+    sortable: {
+      type: Boolean,
+      default: false
+    },
+    filterable: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -28,7 +39,10 @@ export default {
   created() {
     this.$parent.store.commit('setHeader', {
       label: this.label,
-      width: this.width
+      width: this.width,
+      prop: this.prop,
+      sortable: this.sortable,
+      filterable: this.filterable
     })
   },
   mounted() {

@@ -4,7 +4,10 @@ const TableStore = function() {
     tableData: [],
     header: {
       label: [],
-      width: []
+      width: [],
+      prop: [],
+      sortable: [],
+      filterable: []
     },
     columns: [],
     selectAll: false,
@@ -30,6 +33,9 @@ TableStore.prototype.mutations = {
     states.header.label = Array.from(
       new Set(headerData.label.concat(data.label))
     )
+    states.header.prop = headerData.prop.concat(data.prop)
+    states.header.sortable = headerData.sortable.concat(data.sortable)
+    states.header.filterable = headerData.filterable.concat(data.filterable)
   },
   toggleSelectAll(states) {
     states.selectAll = !states.selectAll

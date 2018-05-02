@@ -1,7 +1,7 @@
 <template>
   <div class="main-content">
     <wz-tables class="my-tables" :data="sourceData" :checked="true" :hasPagination="true" pageSize="7">
-      <wz-table-column width="17%" label="产品名称">
+      <wz-table-column width="17%" label="产品名称" prop="name1" sortable>
         <div slot-scope="props">
           <span class="table-span-item">{{ props.name1 }}</span>
         </div>
@@ -16,7 +16,7 @@
           <span class="table-span-item">{{ props.name3 }}</span>
         </div>
       </wz-table-column>
-      <wz-table-column width="17%" label="价格">
+      <wz-table-column width="17%" label="价格" prop="name4" filterable>
         <div slot-scope="props">
           <span class="table-span-item">{{ props.name4 }}</span>
         </div>

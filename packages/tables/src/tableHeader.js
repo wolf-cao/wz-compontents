@@ -21,6 +21,15 @@ export default {
     columnsWidth() {
       return this.store.states.header.width
     },
+    columnsProp() {
+      return this.store.states.header.prop
+    },
+    columnsSortable() {
+      return this.store.states.header.sortable
+    },
+    columnsFilterable() {
+      return this.store.states.header.filterable
+    },
     checkAll() {
       return (
         this.store.states.tableData.filter(item => !item.checked).length < 1
@@ -36,40 +45,56 @@ export default {
       this.store.commit('swithCheckAll')
     },
     getThColumns() {
-      return this.columnsLabels.map((item, index) => {
-        const style = { width: this.columnsWidth[index] }
+      const {
+        columnsLabels,
+        columnsWidth,
+        columnsSortable,
+        columnsFilterable,
+        checkAllEvent,
+        checkAll,
+        checked,
+        filterEvent,
+        getSortIndex,
+        sortBy
+      } = this
+
+      console.log(columnsFilterable)
+
+      return columnsLabels.map((item, index) => {
+        const style = { width: columnsWidth[index] }
         const checkStyle = {
           width: '2%',
           minWidth: '29px'
         }
-        const checkboxEl = this.checked ? (
+        const checkboxEl = checked ? (
           <div class="wz-table-header-th" style={checkStyle}>
             <div class="table-header-th-label">
-              <el-checkbox
-                on-change={this.checkAllEvent}
-                value={this.checkAll}
-              />
+              <el-checkbox on-change={checkAllEvent} value={checkAll} />
             </div>
           </div>
         ) : null
         const headerEl = (
           <div class="wz-table-header-th" style={style}>
             <span class="table-header-th-label">{item}</span>
-            <span
-              class={[
-                {
-                  up: index === this.getSortIndex
-                },
-                'table-header-th-sort'
-              ]}
-              on-click={evt => this.sortBy(evt, index)}
-            >
-              <i class="fontfamily yd-icon-sort-up" />
-              <i class="fontfamily yd-icon-sort-down" />
-            </span>
-            <span class="table-header-th-filter" on-click={this.filterEvent}>
-              <i class="fontfamily defuben" />
-            </span>
+            {columnsSortable[index] ? (
+              <span
+                class={[
+                  {
+                    up: index === getSortIndex
+                  },
+                  'table-header-th-sort'
+                ]}
+                on-click={evt => sortBy(evt, index)}
+              >
+                <i class="fontfamily yd-icon-sort-up" />
+                <i class="fontfamily yd-icon-sort-down" />
+              </span>
+            ) : null}
+            {columnsFilterable[index] ? (
+              <span class="table-header-th-filter" on-click={filterEvent}>
+                <i class="fontfamily defuben" />
+              </span>
+            ) : null}
           </div>
         )
         return index < 1 ? [checkboxEl, headerEl] : headerEl
