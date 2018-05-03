@@ -1,5 +1,23 @@
 const path = require('path')
 
+const getValueByPath = (object, prop) => {
+  prop = prop || ''
+  const paths = prop.split('.')
+  let current = object
+  let result = null
+  for (let i = 0, j = paths.length; i < j; i++) {
+    const path = paths[i]
+    if (!current) break
+
+    if (i === j - 1) {
+      result = current[path]
+      break
+    }
+    current = current[path]
+  }
+  return result
+}
+
 exports.assetsPath = _path => {
   return path.posix.join('website', _path)
 }
@@ -61,30 +79,12 @@ exports.removeClass = (el, cls) => {
   }
 }
 
-exports.getValueByPath = (object, prop) => {
-  prop = prop || ''
-  const paths = prop.split('.')
-  let current = object
-  let result = null
-  for (let i = 0, j = paths.length; i < j; i++) {
-    const path = paths[i]
-    if (!current) break
-
-    if (i === j - 1) {
-      result = current[path]
-      break
-    }
-    current = current[path]
-  }
-  return result
-}
-
 exports.sortby = (attr, data) => {
   return attr
     .map(item => {
       return {
         value: item,
-        key: this.getValueByPath(item, data.sortkey)
+        key: getValueByPath(item, data.sortkey)
       }
     })
     .sort((a, b) => {

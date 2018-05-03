@@ -46,6 +46,7 @@ export default {
     },
     getThColumns() {
       const {
+        columnsProp,
         columnsLabels,
         columnsWidth,
         columnsSortable,
@@ -57,8 +58,6 @@ export default {
         getSortIndex,
         sortBy
       } = this
-
-      console.log(columnsFilterable)
 
       return columnsLabels.map((item, index) => {
         const style = { width: columnsWidth[index] }
@@ -84,7 +83,7 @@ export default {
                   },
                   'table-header-th-sort'
                 ]}
-                on-click={evt => sortBy(evt, index)}
+                on-click={evt => sortBy(evt, index, columnsProp[index])}
               >
                 <i class="fontfamily yd-icon-sort-up" />
                 <i class="fontfamily yd-icon-sort-down" />
@@ -108,20 +107,29 @@ export default {
       }
       Utils.addClass(targetEl, 'filter-show')
     },
-    sortBy(evt, index) {
+    sortBy(evt, index, key) {
       const targetEl = evt.target.parentNode
       this.store.commit('setSortIndex', index)
       if (Utils.hasClass(targetEl, 'up')) {
         Utils.addClass(targetEl, 'down')
         Utils.removeClass(targetEl, 'up')
+        this.store.commit('sortByData', {
+          sortkey: key,
+          reverse: -1
+        })
         return
       }
       if (Utils.hasClass(targetEl, 'down')) {
         Utils.removeClass(targetEl, 'down')
         Utils.removeClass(targetEl, 'up')
+        this.store.commit('switchTableData')
         return
       }
       Utils.addClass(targetEl, 'up')
+      this.store.commit('sortByData', {
+        sortkey: key,
+        reverse: 1
+      })
     }
   },
   render() {

@@ -1,7 +1,7 @@
 <template>
   <div class="main-content">
     <wz-tables class="my-tables" :data="sourceData" :checked="true" :hasPagination="true" pageSize="7">
-      <wz-table-column width="17%" label="产品名称" prop="name1" sortable>
+      <wz-table-column width="17%" label="产品名称">
         <div slot-scope="props">
           <span class="table-span-item">{{ props.name1 }}</span>
         </div>
@@ -21,7 +21,7 @@
           <span class="table-span-item">{{ props.name4 }}</span>
         </div>
       </wz-table-column>
-      <wz-table-column width="17%" label="数量">
+      <wz-table-column width="17%" label="数量" prop="name5" sortable>
         <div slot-scope="props">
           <span class="table-span-item">{{ props.name5 }}</span>
         </div>
@@ -64,7 +64,7 @@ export default {
           name2: '投资标的名称2',
           name3: '现货投资2',
           name4: '2222222.21元',
-          name5: '2222222股',
+          name5: '5222222股',
           name6: '变更失败2',
           name7: '操作 - 修改 - 2'
         },

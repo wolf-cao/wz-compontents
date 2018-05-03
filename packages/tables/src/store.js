@@ -1,3 +1,4 @@
+import Utils from '../../Utils'
 const TableStore = function() {
   this.states = {
     originTableData: [],
@@ -58,6 +59,12 @@ TableStore.prototype.mutations = {
   setSortIndex(states, data) {
     states.sortIndex = data
   },
+  sortByData(states, data) {
+    states.tableData = Utils.sortby(states.tableData, {
+      sortkey: data.sortkey,
+      reverse: data.reverse
+    })
+  },
   setIsShowPagination(states, data) {
     states.pageData.isShow = data
   },
@@ -75,7 +82,9 @@ TableStore.prototype.mutations = {
           index >= (states.pageData.currNum - 1) * states.pageData.pageSize
         )
       })
+      return
     }
+    states.tableData = states.originTableData
   }
 }
 
