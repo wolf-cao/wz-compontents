@@ -113,6 +113,7 @@ export default {
       if (Utils.hasClass(targetEl, 'up')) {
         Utils.addClass(targetEl, 'down')
         Utils.removeClass(targetEl, 'up')
+        // 正序
         this.store.commit('sortByData', {
           sortkey: key,
           reverse: -1
@@ -122,10 +123,12 @@ export default {
       if (Utils.hasClass(targetEl, 'down')) {
         Utils.removeClass(targetEl, 'down')
         Utils.removeClass(targetEl, 'up')
+        // 初始顺序
         this.store.commit('switchTableData')
         return
       }
       Utils.addClass(targetEl, 'up')
+      // 倒序
       this.store.commit('sortByData', {
         sortkey: key,
         reverse: 1
