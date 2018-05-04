@@ -1,6 +1,9 @@
+import Vue from 'vue'
 import Utils from '../../Utils'
 import ElCheckbox from 'element-ui/lib/checkbox'
 import 'element-ui/lib/theme-chalk/checkbox.css'
+import Popper from './poppers.vue'
+
 export default {
   name: 'wz-table-header',
   components: { ElCheckbox },
@@ -101,6 +104,13 @@ export default {
     },
     filterEvent(evt) {
       const targetEl = evt.target.parentNode
+      const popperElement = new Vue(Popper).$mount()
+      popperElement.left = `${targetEl.getBoundingClientRect().left}px`
+      popperElement.top = `${targetEl.getBoundingClientRect().top}px`
+      document.body.appendChild(popperElement.$el)
+      setTimeout(() => {
+        popperElement.$el.setAttribute('data-status', 'pop')
+      }, 20)
       if (Utils.hasClass(targetEl, 'filter-show')) {
         Utils.removeClass(targetEl, 'filter-show')
         return
