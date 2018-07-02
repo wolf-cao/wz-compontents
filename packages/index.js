@@ -1,6 +1,7 @@
 import WZtables from './tables/index'
 import WZtableColumn from './tableColumn/index'
 import WZsiderList from './siderList/index'
+import WZsiderListItem from './siderListItem/index'
 import WZsearcher from './searcher/index'
 import WZpopMenus from './popMenus/index'
 import WZcusList from './cusList/index'
@@ -11,6 +12,7 @@ const components = [
   WZtables,
   WZtableColumn,
   WZsiderList,
+  WZsiderListItem,
   WZsearcher,
   WZpopMenus,
   WZcusList,

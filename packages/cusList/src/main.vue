@@ -1,6 +1,6 @@
 <template>
   <ul class="wz-cuslit">
-    <slot></slot>
+       <slot></slot>
   </ul>
 </template>
 

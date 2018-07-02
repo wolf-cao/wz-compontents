@@ -2,7 +2,7 @@
   <div class="wz-searcher">
     <el-input :placeholder="placeholder" v-model="search" v-if="type === 'simple'"></el-input>
     <div v-else v-click-outside="searchBlur">
-      <el-button type="primary" @click="switchBtn" v-show="!isSearch">
+      <el-button :size="size" type="primary" @click="switchBtn" v-show="!isSearch">
         <i class="fontfamily yd-icon-search"></i>
       </el-button>
       <el-input ref="searchInput" :placeholder="placeholder" v-model="search" v-show="isSearch" :autofocus="isFocus"></el-input>
@@ -44,6 +44,10 @@ export default {
     searchKeys: {
       type: Array,
       default: []
+    },
+    size: {
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -100,7 +104,7 @@ export default {
 <style lang="less" scoped>
 @import '../../../src/website/fonts.less';
 .wz-searcher {
-  height: 42px;
+  height: 40px;
 }
 </style>
 
